@@ -185,5 +185,5 @@ if __name__ == "__main__":
             deepimfam = DeepImFamUsingIndex(config_path, entry)
             print(deepimfam.images_info_path)
             # deepimfam.train()   
-            # deepimfam.predict()
-            break
+            deepimfam.predict()
+            # break

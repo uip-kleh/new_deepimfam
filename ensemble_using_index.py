@@ -159,18 +159,22 @@ class Split3Ensemble(Ensemble):
 if __name__ == "__main__":
     config_path = "new_deepimfam/config.yaml"
 
-    with open("/home/mizuno/data/mizuta_NORM_INDEX/results.json", "r") as f:
+    with open("results.json", "r") as f:
         reuslts = json.load(f)
 
     xgboost_results = []
     random_results = []
 
     columns = []
-    for i in range(2, len(reuslts), 3):
-        
-        print(i, "models ensemble")
-
+    for i in range(len(reuslts)):
         columns.append(reuslts[i][1])
+        if len(columns) % 3 != 0:
+            continue
+
+        print(i, "models ensemble")
+        # print(columns)
+        # break
+
 
         c = [column + "-" + str(i) for column in columns for i in range(5)] + ["labels"]
 

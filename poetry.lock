@@ -538,6 +538,17 @@ files = [
 imbalanced-learn = "*"
 
 [[package]]
+name = "install"
+version = "1.3.5"
+description = "Install packages from within code"
+optional = false
+python-versions = ">=2.7, >=3.5"
+files = [
+    {file = "install-1.3.5-py3-none-any.whl", hash = "sha256:0d3fadf4aa62c95efe8d34757c8507eb46177f86c016c21c6551eafc6a53d5a9"},
+    {file = "install-1.3.5.tar.gz", hash = "sha256:e67c8a0be5ccf8cb4ffa17d090f3a61b6e820e6a7e21cd1d2c0f7bc59b18e647"},
+]
+
+[[package]]
 name = "joblib"
 version = "1.4.0"
 description = "Lightweight pipelining with Python functions"
@@ -1238,6 +1249,17 @@ typing = ["typing-extensions"]
 xmp = ["defusedxml"]
 
 [[package]]
+name = "pip"
+version = "24.1.1"
+description = "The PyPA recommended tool for installing Python packages."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pip-24.1.1-py3-none-any.whl", hash = "sha256:efca15145a95e95c00608afeab66311d40bfb73bb2266a855befd705e6bb15a0"},
+    {file = "pip-24.1.1.tar.gz", hash = "sha256:5aa64f65e1952733ee0a9a9b1f52496ebdb3f3077cc46f80a16d983b58d1180a"},
+]
+
+[[package]]
 name = "plotly"
 version = "5.21.0"
 description = "An open-source, interactive data visualization library for Python"
@@ -1271,6 +1293,23 @@ files = [
     {file = "protobuf-4.25.3-py3-none-any.whl", hash = "sha256:f0700d54bcf45424477e46a9f0944155b46fb0639d69728739c0e47bab83f2b9"},
     {file = "protobuf-4.25.3.tar.gz", hash = "sha256:25b5d0b42fd000320bd7830b349e3b696435f3b329810427a6bcce6a5492cc5c"},
 ]
+
+[[package]]
+name = "pyaml"
+version = "24.4.0"
+description = "PyYAML-based module to produce a bit more pretty and readable YAML-serialized data"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pyaml-24.4.0-py3-none-any.whl", hash = "sha256:acc2b39c55cb0cbe4f694a6d3886f89ad3d2a5b3efcece526202f8de9a6b27de"},
+    {file = "pyaml-24.4.0.tar.gz", hash = "sha256:0e483d9289010e747a325dc43171bcc39d6562dd1dd4719e8cc7e7c96c99fce6"},
+]
+
+[package.dependencies]
+PyYAML = "*"
+
+[package.extras]
+anchors = ["unidecode"]
 
 [[package]]
 name = "pygments"
@@ -1477,6 +1516,30 @@ benchmark = ["matplotlib (>=3.3.4)", "memory-profiler (>=0.57.0)", "pandas (>=1.
 docs = ["Pillow (>=7.1.2)", "matplotlib (>=3.3.4)", "memory-profiler (>=0.57.0)", "numpydoc (>=1.2.0)", "pandas (>=1.1.5)", "plotly (>=5.14.0)", "pooch (>=1.6.0)", "scikit-image (>=0.17.2)", "seaborn (>=0.9.0)", "sphinx (>=6.0.0)", "sphinx-copybutton (>=0.5.2)", "sphinx-gallery (>=0.15.0)", "sphinx-prompt (>=1.3.0)", "sphinxext-opengraph (>=0.4.2)"]
 examples = ["matplotlib (>=3.3.4)", "pandas (>=1.1.5)", "plotly (>=5.14.0)", "pooch (>=1.6.0)", "scikit-image (>=0.17.2)", "seaborn (>=0.9.0)"]
 tests = ["black (>=23.3.0)", "matplotlib (>=3.3.4)", "mypy (>=1.3)", "numpydoc (>=1.2.0)", "pandas (>=1.1.5)", "polars (>=0.19.12)", "pooch (>=1.6.0)", "pyamg (>=4.0.0)", "pyarrow (>=12.0.0)", "pytest (>=7.1.2)", "pytest-cov (>=2.9.0)", "ruff (>=0.0.272)", "scikit-image (>=0.17.2)"]
+
+[[package]]
+name = "scikit-optimize"
+version = "0.10.2"
+description = "Sequential model-based optimization toolbox."
+optional = false
+python-versions = "*"
+files = [
+    {file = "scikit_optimize-0.10.2-py2.py3-none-any.whl", hash = "sha256:45bc7e879b086133984721f2f6735a86c085073f6c481c2ec665b5c67b44d723"},
+    {file = "scikit_optimize-0.10.2.tar.gz", hash = "sha256:00a3d91bf9015e292b6e7aaefe7e6cb95e8d25ce19adafd2cd88849e1a0b0da0"},
+]
+
+[package.dependencies]
+joblib = ">=0.11"
+numpy = ">=1.20.3"
+packaging = ">=21.3"
+pyaml = ">=16.9"
+scikit-learn = ">=1.0.0"
+scipy = ">=1.1.0"
+
+[package.extras]
+dev = ["flake8", "pandas", "pytest", "pytest-cov", "pytest-xdist"]
+doc = ["memory-profiler", "numpydoc", "pydata-sphinx-theme", "sphinx", "sphinx-gallery (>=0.6)"]
+plots = ["matplotlib (>=2.0.0)"]
 
 [[package]]
 name = "scipy"
@@ -1894,4 +1957,4 @@ scikit-learn = ["scikit-learn"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "c96e34d0e938ee10d01c4f510427ac904c9b0393cee9feba463d87096d2e422f"
+content-hash = "82c76832f8c5aedf1b4cba069d89495600b9aa42f5b1262cd887ca493a01181a"

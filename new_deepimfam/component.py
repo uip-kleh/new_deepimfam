@@ -51,19 +51,23 @@ class Common:
             self.amino_info_path = self.join_home(args["amino_info_data"])
 
             # EXPERIMENT INDEX
+            
             self.DATA_NUM = args["DATA_NUM"]
             self.method_directory = self.join_storage(args["method_directory"], is_dir=True)
-            self.experiment_directory = self.make_directory(os.path.join(self.method_directory, self.index))
-            self.coordinates_directory = self.make_directory(os.path.join(self.experiment_directory, "coordinates"))
-            self.images_directory = self.make_directory(os.path.join(self.experiment_directory, "images"))
-            self.results_directory = self.make_directory(os.path.join(self.experiment_directory, "results"))
-            self.results_directory = self.make_directory(os.path.join(self.results_directory, args["model_method"]))
-            self.metrics_path = os.path.join(self.results_directory, "metrics.json")
-            self.images_info_path = os.path.join(self.images_directory, "images_info.csv")
-            self.IMAGE_SIZE = args["IMAGE_SIZE"]
-            self.hierarchy_label = args["hierarchy_label"]
-            self.dropout_ratio = args["DROPOUT_RATIO"]
-            self.BATCH_SIZE = args["BATCH_SIZE"]
+            if self.index is not None: 
+                self.experiment_directory = self.make_directory(os.path.join(self.method_directory, self.index))
+                self.coordinates_directory = self.make_directory(os.path.join(self.experiment_directory, "coordinates"))
+                self.images_directory = self.make_directory(os.path.join(self.experiment_directory, "images"))
+                self.results_directory = self.make_directory(os.path.join(self.experiment_directory, "results"))
+                self.results_directory = self.make_directory(os.path.join(self.results_directory, args["model_method"]))
+                self.metrics_path = os.path.join(self.results_directory, "metrics.json")
+                self.images_info_path = os.path.join(self.images_directory, "images_info.csv")
+
+                # MODEL PARAMETER
+                self.IMAGE_SIZE = args["IMAGE_SIZE"]
+                self.hierarchy_label = args["hierarchy_label"]
+                self.dropout_ratio = args["DROPOUT_RATIO"]
+                self.BATCH_SIZE = args["BATCH_SIZE"]
 
     def join_home(self, fname, is_dir=False):
         fname = os.path.join(os.environ["HOME"], fname)
@@ -348,8 +352,8 @@ class ImageGenerator(Common):
         width, height = max - min
         imgw, imgh = img - 1
 
-        rat = np.max([width / imgw, height / imgh]) # SAME RATION OF HEIGHT AND WIDTH
-        # rat = np.array([width / imgw, height / imgh])
+        # rat = np.max([width / imgw, height / imgh]) # SAME RATION OF HEIGHT AND WIDTH
+        rat = np.array([width / imgw, height / imgh])
         dat = dat / rat
         max, min = (max, min) / rat # SAME RATION OF HEIGHT AND WIDTH
 
@@ -465,7 +469,7 @@ class DeepImFam(Common):
             Conv2D(64, (3, 3), activation="relu", padding="same"),
             MaxPooling2D((2, 2)),
             Conv2D(64, (3, 3), activation="relu", padding="same"),
-            # MaxPooling2D((2, 2)),
+            MaxPooling2D((2, 2)),
             Flatten(),
             Dense(1024, activation="relu", kernel_regularizer=l2(0.001)),
             Dropout(self.dropout_ratio),
