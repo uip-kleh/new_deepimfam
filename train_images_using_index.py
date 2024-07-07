@@ -188,6 +188,6 @@ if __name__ == "__main__":
         for entry in f.read().splitlines():
             deepimfam = DeepImFamUsingIndex(config_path, entry)
             # print(deepimfam.images_info_path)
-            # deepimfam.train()   
-            deepimfam.predict()
+            deepimfam.train()   
+            # deepimfam.predict()
             
