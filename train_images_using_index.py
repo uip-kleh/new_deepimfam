@@ -51,12 +51,13 @@ class DeepImFamUsingIndex(DeepImFam):
             train_gen,
             validation_data=val_gen,
             epochs=1000,
-            batch_size=512,
+            batch_size=1024,
             callbacks=[reduce_lr, early_stopping],
         )    
 
         # SAVE MODEL
         fname = os.path.join(self.results_directory, "model.h5")
+        print(fname)
         model.save(fname)
 
         # SAVE RESULT
@@ -149,6 +150,7 @@ class DeepImFamUsingIndex(DeepImFam):
         val_dict = self.load_csv_as_dict(val_fname)
         test_dict = self.load_csv_as_dict(test_fname)
         for i in range(5):
+            deepimfam.predict()
             train_dict["-".join([self.index, str(i)])] = train_proba[:, i]
             val_dict["-".join([self.index, str(i)])] = val_proba[:, i]
             test_dict["-".join([self.index, str(i)])] = test_proba[:, i]
@@ -177,13 +179,15 @@ class DeepImFamUsingIndex(DeepImFam):
         test_dict["-".join([self.index])] = test_pred.tolist()
         self.save_dict_as_dataframe(test_dict, test_fname)
 
+        print("saved prediction!")
+
 if __name__ == "__main__":
     entry_path = "/home/mizuno/data/aaindex_entry.txt"
     config_path = "new_deepimfam/config.yaml"
     with open(entry_path, "r") as f:
         for entry in f.read().splitlines():
             deepimfam = DeepImFamUsingIndex(config_path, entry)
-            print(deepimfam.images_info_path)
+            # print(deepimfam.images_info_path)
             # deepimfam.train()   
             deepimfam.predict()
-            # break
+            

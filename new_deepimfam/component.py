@@ -63,6 +63,9 @@ class Common:
                 self.metrics_path = os.path.join(self.results_directory, "metrics.json")
                 self.images_info_path = os.path.join(self.images_directory, "images_info.csv")
 
+                print("experiment_directory", self.experiment_directory)
+                print("result_directory:", self.results_directory)
+
                 # MODEL PARAMETER
                 self.IMAGE_SIZE = args["IMAGE_SIZE"]
                 self.hierarchy_label = args["hierarchy_label"]
@@ -483,7 +486,7 @@ class DeepImFam(Common):
             Dense(5, activation="softmax"),
             ])
         
-        model.summary()
+        # model.summary()
 
         model.compile(
             optimizer=keras.optimizers.Adam(learning_rate=0.001),
