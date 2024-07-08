@@ -150,7 +150,6 @@ class DeepImFamUsingIndex(DeepImFam):
         val_dict = self.load_csv_as_dict(val_fname)
         test_dict = self.load_csv_as_dict(test_fname)
         for i in range(5):
-            deepimfam.predict()
             train_dict["-".join([self.index, str(i)])] = train_proba[:, i]
             val_dict["-".join([self.index, str(i)])] = val_proba[:, i]
             test_dict["-".join([self.index, str(i)])] = test_proba[:, i]
